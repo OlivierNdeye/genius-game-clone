@@ -1,3 +1,3 @@
-function alteraCores {
+function alteraCores() {
 	let verde = 0;
 }
