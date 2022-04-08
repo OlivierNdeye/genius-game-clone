@@ -7,12 +7,10 @@ let score = 0;
 //2 = amarelo
 //4 = azul 
 
-
 const blue = document.querySelector('.blue');
 const red = document.querySelector('.red');
 const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
-
 
 //criar ordem aleatoria de cores 
 let shuffleOrder = () => {
@@ -22,21 +20,20 @@ let shuffleOrder = () => {
 
   for(let i in order){
   	let elementColor = createColorElement(order[i]);
-  	lightColor(elementColor, Number[i] + 1) 
+  	lightColor(elementColor, Number(1) + 1) 
   }
 }
 
 //acende as cores 
-let lightColor = (element, number)=> {
-	number = number + 500;
+let lightColor = (element, number) => {
+	number = number * 1000;
 	setTimeout(()=> {
 		element.classList.add('selected');
-	}, number - 250);
+	}, number - 500);
 	setTimeout(() =>{
 		element.classList.remove('selected');
 	},)
 }
-
 
 //checa se a cor selecionada é igual a exibida pela maquina
 let checkOrder = () => {
@@ -46,9 +43,8 @@ let checkOrder = () => {
 			break;
 		}
 	}
-
 	if(clickedOrder.length == order.length){
-		alert(`pontuação: $(score)\n Você Acertou Iniciando próximo nível`)
+		alert(`pontuação: ${score}\n Você Acertou Iniciando próximo nível`)
 		nextLevel();
 	}
 }
@@ -62,9 +58,7 @@ let click = (color) => {
 		createColorElement(color).classList.remove('selected');
 		checkOrder();
 	},250);
-
 }
-
 
 //funcao referente a cor 
 let createColorElement = (color) => {
@@ -81,13 +75,13 @@ let createColorElement = (color) => {
 
 // funcao responsavel de aumentar os pontos e mudar o nivel
 let nextLevel = ( ) => {
-	score++;
+	score = score + 10;
 	shuffleOrder();
 }
 
 //funcao de fim de jogo
 let gameOver = () => {
-	alert(`Pontuação: $(score)! \n Você perdeu o jogon\n Clique em ok para iniciar um novo jogo`);
+	alert(`Pontuação: ${score}! \n Você perdeu o jogon\n Clique em ok para iniciar um novo jogo`);
 	order = [];
 	clickedOrder= []
 
@@ -102,9 +96,15 @@ let playGame = () => {
 	nextLevel();
 }
 
-green.addEventListener('click', click(0));
-red.addEventListener('click', click(1));
-yellow.addEventListener('click', click(2));
-blue.addEventListener('click', click(3));
+//green.addEventListener('click', click(0));
+//red.addEventListener('click', click(1));
+//yellow.addEventListener('click', click(2));
+//blue.addEventListener('click', click(3));
 
+
+
+green.onclick = () => click(0);
+red.onclick = () => click(1);
+yellow.onclick = () => click(2);
+blue.onclick = () => click(3);
 playGame();

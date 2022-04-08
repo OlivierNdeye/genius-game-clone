@@ -1,9 +1,6 @@
 body {
 	margin-top: 0;
-	background-image: url(./backgroung.jpg);
-	background-size: 2100px 1000px;
-	background-position: absolute;
-	background-repeat: no-repeat;
+	background-color: rgb(208, 255, 239);
 }
 
 .main-game {
@@ -22,7 +19,6 @@ body {
 	border: 1px solid #fffffff;
 	background-color: #fffffff;
 	border-radius: 100%;
-	box-shadow: 6px 6px 6px #0E1D2F;
 	width: 700px;
 	height: 700px;
 }
@@ -52,5 +48,5 @@ body {
 }
 
 .selected {
-	opacity: 0.8;
+	opacity: 0.4;
 }
