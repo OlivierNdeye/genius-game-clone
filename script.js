@@ -8,15 +8,15 @@ let score = 0;
 //4 = azul 
 
 
-const blue = document.querySelector('blue');
-const red = document.querySelector('red');
-const green = document.querySelector('green');
-const yellow = document.querySelector('yellow');
+const blue = document.querySelector('.blue');
+const red = document.querySelector('.red');
+const green = document.querySelector('.green');
+const yellow = document.querySelector('.yellow');
 
 
 //criar ordem aleatoria de cores 
 let shuffleOrder = () => {
-  let colorOrder = math.floor(math.random() = 4);
+  let colorOrder = Math.floor(Math.random() * 4);
   order[order.length] = colorOrder;
   clickedOrder = [];
 
@@ -28,10 +28,10 @@ let shuffleOrder = () => {
 
 //acende as cores 
 let lightColor = (element, number)=> {
-	time = time + 500;
+	number = number + 500;
 	setTimeout(()=> {
 		element.classList.add('selected');
-	}, tempo - 250);
+	}, number - 250);
 	setTimeout(() =>{
 		element.classList.remove('selected');
 	},)
@@ -41,7 +41,7 @@ let lightColor = (element, number)=> {
 //checa se a cor selecionada é igual a exibida pela maquina
 let checkOrder = () => {
 	for(let i in clickedOrder){
-		if(clickedOrder[i] != orde[i]){
+		if(clickedOrder[i] != order[i]){
 			gameOver();
 			break;
 		}
@@ -55,14 +55,14 @@ let checkOrder = () => {
 
 //função para o clique do usuario
 let click = (color) => {
-	clickedOrder(clickedOrder.length) = color;
+	clickedOrder[clickedOrder.length] = color;
 	createColorElement(color).classList.add('selected');
 
 	setTimeout(() =>{
-		createColorElement(color).classList.add('selected');
-	})
+		createColorElement(color).classList.remove('selected');
+		checkOrder();
+	},250);
 
-	checkOrder();
 }
 
 
@@ -98,4 +98,13 @@ let gameOver = () => {
 let playGame = () => {
 	alert('Bem-vindo ao GENESIS! Iniciando novo jogo...')
 	score = 0;
+
+	nextLevel();
 }
+
+green.addEventListener('click', click(0));
+red.addEventListener('click', click(1));
+yellow.addEventListener('click', click(2));
+blue.addEventListener('click', click(3));
+
+playGame();

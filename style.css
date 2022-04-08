@@ -1,6 +1,9 @@
 body {
 	margin-top: 0;
-	background-color: rgb(200, 255, 239);
+	background-image: url(./backgroung.jpg);
+	background-size: 2100px 1000px;
+	background-position: absolute;
+	background-repeat: no-repeat;
 }
 
 .main-game {
